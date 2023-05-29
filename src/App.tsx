@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import './App.css';
-import Squares from "./components/Squares";
 import Counter from "./components/Counter";
 import ResetBtn from "./components/ResetBtn";
+import SquareWrapper from "./components/SquareWrapper";
+
+import './App.css';
 
 const App = () => {
     const createItems = (): TSquare[] => {
@@ -49,15 +50,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <div className="square-container">
-                {items.map((item, index: number) => (
-                    item.clicked ? (
-                        <Squares class="square square-transparent" ringEl={item.hasItem ? 'o' : ''} key={index} />
-                    ) : (
-                        <Squares changeClick={() => changeClick(index)} class="square" ringEl={item.hasItem ? 'o' : ''} hasItem={item.hasItem} key={index} />
-                    )
-                ))}
-            </div>
+            <SquareWrapper items={items} changeClick={changeClick} />
             <div>
                 <ResetBtn resetGame={resetGame} />
                 <Counter counter={counter} />

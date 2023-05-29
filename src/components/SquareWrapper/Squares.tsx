@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ISquares {
     changeClick?: React.MouseEventHandler,
-    ringEl?: string,
+    ringEl?: React.ReactNode | string,
     hasItem?: boolean
     clicked?: boolean
 }

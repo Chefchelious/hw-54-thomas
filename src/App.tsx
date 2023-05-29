@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Counter from "./components/Counter";
-import ResetBtn from "./components/ResetBtn";
-import SquareWrapper from "./components/SquareWrapper";
+import Counter from "./components/Counter/Counter";
+import ResetBtn from "./components/Buttons/ResetBtn";
+import SquareWrapper from "./components/SquareWrapper/SquareWrapper";
 
 import './App.css';
 
@@ -29,18 +29,19 @@ const App = () => {
     const [items, setItems] = useState(createItems);
     const [counter, setCounter] = useState(0);
 
-    console.log(items);
-
     const changeClick= (index: number) => {
         const itemsCopy = [...items];
         const itemObj = {...itemsCopy[index]};
-        itemObj.clicked = !itemObj.clicked;
-        itemsCopy[index] = itemObj;
 
-        let counterCopy = counter;
-        counterCopy++;
-        setCounter(counterCopy);
-        setItems(itemsCopy);
+        if (!itemObj.clicked) {
+            itemObj.clicked = !itemObj.clicked;
+            itemsCopy[index] = itemObj;
+
+            let counterCopy = counter;
+            counterCopy++;
+            setCounter(counterCopy);
+            setItems(itemsCopy);
+        }
     };
 
     const resetGame = () => {
